@@ -1,50 +1,28 @@
 #include <iostream>
 #include<conio.h>
+#include<stdio.h>
 
-using namespace std
+using namespace std;
+int i=0;
+void tower_of_hanoi(int c, char source,char destination, char intermediate)
+{
+    if(c==1)
+    {
 
+        printf("Move top disc from pole %c to pole %c\n",source,destination);
+        i++;
+
+    }
+    else
+    {
+        tower_of_hanoi(c-1,source,intermediate,destination);
+        tower_of_hanoi(1,source,destination,intermediate);
+        tower_of_hanoi(c-1,intermediate,destination,source);
+    }
+}
 int main()
 {
-    int n, A[100][100],i,j,data=1,x=0,y=0;
-    cout << "Enter the size of magic square (only odd numbers)" << endl;
-    cin>>n;
-    for(i=0;i<n;i++)
-    {
-        for(j=0;j<n;j++)
-        {
-            A[i][j]=0;
-        }
-    }
-    i=0,j=n/2;
-    while(data<=(n*n))
-    {
-        A[i][j]=data,x=i,y=j,i-=1,j+=1;
-
-
-        if(i<0)
-        {
-            i=n-1;
-        }
-        if(j>=n)
-        {
-            j=0;
-        }
-        if(A[i][j]!=0)
-        {
-            i=x+1,j=y;
-        }
-        data++;
-    }
-    cout<<"_________M A G I C    S Q U A R E__________"<<endl;
-     for(i=0;i<n;i++)
-    {
-        for(j=0;j<n;j++)
-        {
-            cout<<A[i][j]<<"\t";
-        }
-        cout<<endl;
-
-    }
-
+    tower_of_hanoi(4 ,'A','C','B');
+    cout<<endl<<i;
     return 0;
 }
