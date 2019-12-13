@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1570579135 source:d:\rahul chadgal\c++\quicksort\main.cpp
+	<iostream>
+	<conio.h>
+	<stdio.h>
+

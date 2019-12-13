@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1570365718 source:d:\rahul chadgal\c++\magic square\main.cpp
+	<iostream>
+	<conio.h>
+
