@@ -1,28 +1,38 @@
 #include <iostream>
-#include<conio.h>
 #include<stdio.h>
+#include<conio.h>
 
 using namespace std;
-int i=0;
-void tower_of_hanoi(int c, char source,char destination, char intermediate)
+int edit_distance(char *X, char *Y,int m,int n)
 {
-    if(c==1)
+  // cout<<X<<Y<<m<<n;
+    int dis[m+1][n+1];
+    int i=0,j=0;
+    for(i=0;i<=m;i++)
     {
-
-        printf("Move top disc from pole %c to pole %c\n",source,destination);
-        i++;
-
+        for(j=0;j<=n;j++)
+        {
+            if(i==0)
+                dis[i][j]=j;
+            else if(j==0)
+                dis[i][j]=i;
+            else if(X[i-1]==Y[j-1])
+                dis[i][j]=dis[i-1][j-1];
+            else
+            {
+                int a = min(dis[i][j-1],dis[i-1][j]);
+                dis[i][j]=1+min(a,dis[i-1][j-1]);
+            }
+        }
     }
-    else
-    {
-        tower_of_hanoi(c-1,source,intermediate,destination);
-        tower_of_hanoi(1,source,destination,intermediate);
-        tower_of_hanoi(c-1,intermediate,destination,source);
-    }
+    return dis[m][n];
 }
 int main()
 {
-    tower_of_hanoi(4 ,'A','C','B');
-    cout<<endl<<i;
+    //int z= edit_distance("CART","MARCH",,4);
+    cout <<  edit_distance("CART","MARCH",4,5)<< endl;
     return 0;
 }
+
+//min function dont applied in 3 numbers in this compiler
+
